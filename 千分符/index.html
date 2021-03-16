@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // function num(num) {
+    //   num = Array.from(num)
+    //   num = num.reverse()
+    //   num = num.join('')
+    //   console.log(num)
+    //   num = num.replace(/(\d{3})/g, (...arguments) => {
+    //     console.log(arguments)
+    //     return arguments[1] + ',';
+    //   })
+    //   console.log(num)
+    //   num = Array.from(num)
+    //   num = num.reverse()
+    //   num = num.join('')
+    //   num = num.replace(/^\,/, '')
+    //   console.log(num)
+    //   return num;
+    // }
+
+    function num(str) {
+      var reg = /(?=(?!\b)(\d{3})+$)/g;
+      str.replace(reg, function(){
+        console.log(arguments)
+      })
+      return str.replace(reg, ',')
+    }
+    console.log(num('234567348901'))
+
+  </script>
+</body>
+
+</html>
