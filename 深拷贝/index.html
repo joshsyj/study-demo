@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var obj = {
+      a: {
+        aa: 1
+      },
+      b: [1, 2, 3, 4],
+      c: {
+        cc: {
+          ccc: 1
+        }
+      },
+      d: 2
+    }
+    function deep(obj) {
+      if (typeof obj === 'object') {
+        var result = obj.constructor === Array ? [] : {};
+        for (var i in obj) {
+          result[i] = typeof obj[i] === 'object' ? deep(obj[i]) : obj[i]
+        }
+      } else {
+        var result = obj
+      }
+      return result
+    }
+    console.log(deep(obj))
+  </script>
+</body>
+
+</html>
