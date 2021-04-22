@@ -20,7 +20,8 @@
           ccc: 1
         }
       },
-      d: 2
+      d: 2,
+      f:function(){}
     }
     function deep(obj) {
       if (typeof obj === 'object') {
@@ -33,7 +34,9 @@
       }
       return result
     }
-    console.log(deep(obj))
+    var obj2 = deep(obj)
+    obj2.a.aa=2
+
   </script>
 </body>
 
