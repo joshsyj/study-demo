@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>已知宽高，进行水平垂直居中</title>
+    <style>
+        .outer {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            background: blue;
+        }
+
+        .inner {
+            position: absolute;
+            width: 200px;
+            height: 300px;
+            background: red;
+            left: 50%;
+            top: 50%;
+            margin: -150px 0 0 -100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+</body>
+
+</html>

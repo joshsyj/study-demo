@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>flex 布局
+  </title>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    div {
+      height: 100%;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    .content {
+      flex: 1 1;
+      order: 2;
+      background: #f00;
+    }
+
+    .left {
+      flex: 0 0 200px;
+      order: 1;
+      background: #0f0;
+    }
+
+    .right {
+      flex: 0 0 300px;
+      order: 3;
+      background: #00f;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="content">hello world</div>
+    <div class="left">你好</div>
+    <div class="right">王鹏浩</div>
+  </div>
+</body>
+
+</html>

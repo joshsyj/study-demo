@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片和其他元素使用 display: table-cell; 进行垂直居中
+    </title>
+    <style>
+      .outer {
+        width: 400px;
+        height: 600px;
+        /* background: blue; */
+        border: 1px solid red;
+        background-color: transparent;
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      .inner {
+        background: red;
+        width: 200px;
+        height: 300px;
+        border: 1px solid blue;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="inner">我想居中显示</div>
+    </div>
+  </body>
+</html>
