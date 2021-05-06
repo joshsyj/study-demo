@@ -16,7 +16,8 @@ class Observer {
         var dep = new Dep();
         Object.defineProperty(data, key, {
             get() {
-                if(Dep.target){
+                debugger
+                if (Dep.target) {
                     dep.depend(Dep.target)
                 }
                 return val;
@@ -37,7 +38,7 @@ class Dep {
         this.id = id++;
         this.sub = []
     }
-    depend(w){
+    depend(w) {
         w.addSub(this)
     }
     addSub(w) {

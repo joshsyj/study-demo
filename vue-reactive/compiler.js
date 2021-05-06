@@ -35,8 +35,6 @@ class Compiler {
     }
     compile(node) {
         var nodeAttrs = node.attributes;
-        console.log(nodeAttrs)
-        console.log(Array.prototype.slice.call(nodeAttrs))
         Array.prototype.slice.call(nodeAttrs).forEach(function (attr) {
             var attrName = attr.name;
             if (this.isDirective(attrName)) {
@@ -82,6 +80,7 @@ const compileUtil = {
     bind(node, vm, exp, dir) {
         var updaterFn = updater[dir + 'Updater'];
         updaterFn && updaterFn(node, this._getVMVal(vm, exp));
+        debugger
         new Watcher(vm, exp, (val) => {
             updaterFn && updaterFn(node, val)
         })

@@ -21,7 +21,7 @@
         }
       },
       d: 2,
-      f: function () { }
+      f:function(){}
     }
     function deep(obj) {
       var result
@@ -35,27 +35,9 @@
       }
       return result
     }
+    var obj2 = deep(obj)
+    obj2.a.aa=2
 
-
-    console.log(deep(obj)===obj)
-  </script>
-
-  <script>
-    var obj1 = {
-      a: {
-        aa: 1
-      },
-      b: [1, 2, 3, 4],
-      c: {
-        cc: {
-          ccc: 1
-        }
-      },
-      d: 2,
-      f: function () { }
-    }
-    var {...obj2} = obj1;
-    console.log(obj2===obj1)
   </script>
 </body>
 
