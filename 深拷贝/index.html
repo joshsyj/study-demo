@@ -20,20 +20,42 @@
           ccc: 1
         }
       },
-      d: 2
+      d: 2,
+      f: function () { }
     }
     function deep(obj) {
+      var result
       if (typeof obj === 'object') {
-        var result = obj.constructor === Array ? [] : {};
+        result = obj.constructor === Array ? [] : {};
         for (var i in obj) {
           result[i] = typeof obj[i] === 'object' ? deep(obj[i]) : obj[i]
         }
       } else {
-        var result = obj
+        result = obj
       }
       return result
     }
-    console.log(deep(obj))
+
+
+    console.log(deep(obj)===obj)
+  </script>
+
+  <script>
+    var obj1 = {
+      a: {
+        aa: 1
+      },
+      b: [1, 2, 3, 4],
+      c: {
+        cc: {
+          ccc: 1
+        }
+      },
+      d: 2,
+      f: function () { }
+    }
+    var {...obj2} = obj1;
+    console.log(obj2===obj1)
   </script>
 </body>
 
