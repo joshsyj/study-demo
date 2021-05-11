@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function inherit(Child, Parent) {
+      console.log(Child.super)
+      // 继承原型上的属性 
+      Child.prototype = Object.create(Parent.prototype)
+      // 修复 constructor
+      Child.prototype.constructor = Child
+      // 存储超类
+      Child.super = Parent
+      // 静态属性继承
+      if (Object.setPrototypeOf) {
+        // setPrototypeOf es6
+        Object.setPrototypeOf(Child, Parent)
+      } else if (Child.__proto__) {
+        // __proto__ es6 引入，但是部分浏览器早已支持
+        Child.__proto__ = Parent
+      } else {
+        // 兼容 IE10 等陈旧浏览器
+        // 将 Parent 上的静态属性和方法拷贝一份到 Child 上，不会覆盖 Child 上的方法
+        for (var k in Parent) {
+          if (Parent.hasOwnProperty(k) && !(k in Child)) {
+            Child[k] = Parent[k]
+          }
+        }
+      }
+    }
+
+    function Child1(){
+      this.c1=1;
+      this.c2=2;
+    }
+    function Parent1(){
+      this.p1=1
+      this.p2=2
+    }
+    Parent1.cc=  function(){}
+    inherit(Child1, Parent1)
+  </script>
+</body>
+
+</html>

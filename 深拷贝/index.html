@@ -24,14 +24,15 @@
       f: function () { }
     }
     function deep(obj) {
+      var result
       if (typeof obj === 'object') {
-        var result = obj.constructor === Array ? [] : {};
+        result = obj.constructor === Array ? [] : {};
         for (var i in obj) {
           result[i] = typeof obj[i] === 'object' ? deep(obj[i]) : obj[i]
         }
       }
       else {
-        var result = obj
+        result = obj
       }
       return result
     }
