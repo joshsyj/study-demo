@@ -21,7 +21,7 @@
         }
       },
       d: 2,
-      f:function(){}
+      f: function () { }
     }
     function deep(obj) {
       if (typeof obj === 'object') {
@@ -29,13 +29,16 @@
         for (var i in obj) {
           result[i] = typeof obj[i] === 'object' ? deep(obj[i]) : obj[i]
         }
-      } else {
+      }
+      else {
         var result = obj
       }
       return result
     }
     var obj2 = deep(obj)
-    obj2.a.aa=2
+    obj.a.aa = 2
+    console.log(obj)
+    console.log(obj2)
 
   </script>
 </body>
