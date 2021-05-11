@@ -1,13 +1,16 @@
-const a = new Promise((resolve,reject)=>{
-    resolve(1)
-})
+const MyPromise = require("./MyPromise");
 
-a.then((res)=>{
-    return res
-}).then((res)=>{
-    return new Promise((resolve,reject)=>{
-        resolve(res)
-    })
-}).then((res)=>{
-    console.log(res)
-})
+const promise = new MyPromise((resolve, reject) => {
+  resolve(1);
+  // reject('error')
+  //   throw new Error("throw error haha");
+});
+console.log(promise);
+promise.then(
+  (value) => {
+    console.log("fulfilled: " + value);
+  },
+  (reason) => {
+    console.log("reason: " + reason);
+  }
+);

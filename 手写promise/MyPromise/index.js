@@ -1,45 +1,42 @@
-const PENDING = 'PENDING',
-  FULFILLED = 'FULFILLED',
-  REJECTED = 'REJECTED';
+const FULFILLED = "FULFILLED";
+const PENDING = "PENDING";
+const REJECTED = "REJECTED";
 
 class MyPromise {
-  constructor(fn) {
-    if (typeof fn !== 'function') {
-      throw new TypeError('Promise resolver ${executor} is not a function')
-    }
+  constructor(executor) {
+    if (!executor) throw new Error("exector is require");
+    this.status = PENDING;
     this.value = undefined;
     this.reason = undefined;
-    this.status = PENDING;
-    this.onFulfilledCallback = [];
-    this.onRejectedCallback = [];
-
     let resolve = (value) => {
       if (this.status == PENDING) {
         this.status = FULFILLED;
         this.value = value;
       }
-    }
-    let reject = (reason) => {
+    };
+
+    let reject = (value) => {
       if (this.status == PENDING) {
         this.status = REJECTED;
-        this.reason = reason;
+        this.reason = value;
       }
+    };
+
+    try {
+      executor(resolve, reject);
+    } catch (err) {
+      reject(err);
     }
-    fn(resolve, reject);
   }
 
-  then (onFulfilled, onRejected) {
-    if (this.status == PENDING) {
-      this.onFulfilledCallback.push(onFulfilled);
-      this.onRejectedCallback.push(onRejected);
-    }
+  then(onFulfilled, onRejected) {
     if (this.status == FULFILLED) {
-      onFulfilled(this.value)
+      onFulfilled(this.value);
     }
-
     if (this.status == REJECTED) {
-      onRejected(this.value)
+      onRejected(this.reason);
     }
   }
 }
-module.exports = MyPromise
+
+module.exports = MyPromise;
