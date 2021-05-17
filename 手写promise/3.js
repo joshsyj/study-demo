@@ -1,11 +1,21 @@
-const MyPromise = require("./MyPromise/1");
+const MyPromise = require("./MyPromise/3");
 
 const promise = new MyPromise((resolve, reject) => {
-  resolve(1);
+  setTimeout(() => {
+    resolve(1);
+  }, 2000);
   // reject('error')
   //   throw new Error("throw error haha");
 });
-console.log(promise);
+promise.then(
+  (value) => {
+    console.log("fulfilled: " + value);
+  },
+  (reason) => {
+    console.log("reason: " + reason);
+  }
+);
+
 promise.then(
   (value) => {
     console.log("fulfilled: " + value);
