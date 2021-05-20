@@ -1,6 +1,6 @@
-let arr = [60, 23, 5, 2, 34, 54, 3, 2, 5, 213, 23]
+let arr = [60, 23, 5]
 
-function sort(arr) {
+function sort (arr) {
     arr = arr.slice();
     for (var i = 0; i < arr.length - 1; i++) {
         for (var j = 0; j < arr.length - 1 - i; j++) {
