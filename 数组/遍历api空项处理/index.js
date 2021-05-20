@@ -40,6 +40,22 @@
   console.log('--------------------')
 })()
 
+//find
+!(function () {
+  //        filter() 对数组进行 过滤并返回一个数组
+  //      与find()findIndex() 类似 都是遍历数组 找出满足条件的元素
+  //                find() 返回第一个满足田间的元素
+  //                findIndex（）返回的是第一个满足条件的元素的下标
+  console.log('find')
+  let arr = [1, , 3, 4, 5, , 6].find((v, k, arr) => {
+    console.log(v, k, arr);
+    return v == 3;
+    //            return
+  })
+  console.log(arr); //不忽略空位
+  console.log('--------------------')
+})()
+
 //every
 !(function () {
   /*every() 对每个元素进行筛选 全部满足条件则返回true*/
