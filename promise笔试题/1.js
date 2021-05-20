@@ -8,7 +8,18 @@ const YB = async (v) => {
   });
 };
 
-list.forEach(async (v) => {
-  let res = await YB(v);
-  console.log(res);
-});
+//代码1
+// list.forEach(async (v) => {
+//   let res = await YB(v);
+//   console.log(res);
+// });
+
+//代码2
+; (async function test () {
+  for (var i = 0; i < list.length; i++) {
+    let res = await YB(list[i]);
+    console.log(res);
+  }
+})()
+
+//请问代码1与代码2输出值
