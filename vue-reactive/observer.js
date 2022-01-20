@@ -16,8 +16,8 @@ class Observer {
         var dep = new Dep();
         Object.defineProperty(data, key, {
             get() {
-                debugger
                 if (Dep.target) {
+                    debugger
                     dep.depend(Dep.target)
                 }
                 return val;
