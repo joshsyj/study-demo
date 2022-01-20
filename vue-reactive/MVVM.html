@@ -15,7 +15,7 @@
     <script src="./mvvm.js"></script>
     <div id="app">
         <h1>{{message}}</h1>
-        <h1>{{message}}</h1>
+        <h1>{{obj.html}}</h1>
 
         <ul>
             <li>1</li>
@@ -32,10 +32,12 @@
                     a: 'world'
                 },
                 obj: {
-                    html: 'asdasd'
+                    html: 'asdasd',
+                    html2: 'asdasd'
                 }
             },
         })
+        console.log(mvvm)
     </script>
 </body>
 

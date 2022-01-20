@@ -42,6 +42,7 @@ class Watcher {
             var val = this.vm.data;
             exp.forEach((k) => {
                 val = val[k];
+                console.log(val)
             })
             return val;
         }

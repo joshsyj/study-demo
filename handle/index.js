@@ -8,10 +8,13 @@ Function.prototype.before = function (fn) {
 }
 
 Function.prototype.after = function (fn) {
-    var _this = this;
+    var _this = this;//before函数返回的内层函数
     return function () {
-        console.log(_this, this)
+        console.log('_this')
+        console.log(_this)
         var r = _this.apply(null); // 先执行原函数，也就是func_1
+        console.log('this')
+        console.log(this)
         fn.apply(this, arguments);   // 再执行新函数
         return r;
     }
@@ -19,7 +22,9 @@ Function.prototype.after = function (fn) {
 
 var func_1 = function () {
     console.log("2")
+    return 2
 }
+
 func_1 = func_1
     .before(function () {
         console.log("1");
@@ -28,8 +33,6 @@ func_1 = func_1
     .after(function () {
         console.log("3");
     })
-
-
 
 func_1();   // 输出1、2、3
 

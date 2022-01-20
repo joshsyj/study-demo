@@ -34,23 +34,31 @@ function before(target, key, descriptor) {
         ...descriptor,
         value() {
             console.log(3)
-            return fn.apply(this, arguments);
+            let result = fn.apply(this, arguments);
+            console.log('before')
+            return result
         }
     }
 }
 function after2(target, key, descriptor) {
     const fn = descriptor.value;
+    console.log(arguments)
     console.log('after2',descriptor.value)
     return {
         ...descriptor,
         value() {
             console.log(4)
+            console.log(this)
             let result = fn.apply(this, arguments);
             console.log('after2');
             return result;
         }
     }
 }
+
+
+
+
 
 class Test {
     @after1

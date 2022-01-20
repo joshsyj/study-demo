@@ -1,53 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        //实现a==11&&a==22&&a==33
+      //实现a==11&&a==22&&a==33
 
-        a = {
-            v: 1,
-            valueOf: function () {
-                console.log(11 * a.v)
-                return 11 * a.v++;
-            }
-        }
+      a = {
+        v: 1,
+        valueOf: function () {
+          console.log(11 * a.v);
+          return 11 * a.v++;
+        },
+      };
 
-        console.log(a == 11 && a == 22 && a == 33)
+      console.log(a == 11 && a == 22 && a == 33);
 
+      //隐式转换
+      //https://www.cnblogs.com/chenmeng0818/p/5954215.html
+      // js中的隐式转换
+      // js中的不同的数据类型之间的比较转换规则如下：
 
+      // 1. 对象和布尔值比较
+      // 对象和布尔值进行比较时，对象先转换为字符串，然后再转换为数字，布尔值直接转换为数字
+      // [] == true;  //false  []转换为字符串'',然后转换为数字0,true转换为数字1，所以为false
+      // 2. 对象和字符串比较
+      // 对象和字符串进行比较时，对象转换为字符串，然后两者进行比较。
+      // [1, 2, 3] == '1,2,3' // true  [1,2,3]转化为'1,2,3'，然后和'1,2,3'， so结果为true;
+      // 3. 对象和数字比较
+      // 对象和数字进行比较时，对象先转换为字符串，然后转换为数字，再和数字进行比较。
+      // [1] == 1;  // true  `对象先转换为字符串再转换为数字，二者再比较 [1] => '1' => 1 所以结果为true
+      // 4. 字符串和数字比较
+      // 字符串和数字进行比较时，字符串转换成数字，二者再比较。
+      // '1' == 1 // true
+      // 5. 字符串和布尔值比较
+      // 字符串和布尔值进行比较时，二者全部转换成数值再比较。
+      // '1' == true; // true
+      // 6. 布尔值和数字比较
+      // 布尔值和数字进行比较时，布尔转换为数字，二者比较。
+      // true == 1 // true
 
-        //隐式转换
-        //https://www.cnblogs.com/chenmeng0818/p/5954215.html
-        // js中的隐式转换
-        // js中的不同的数据类型之间的比较转换规则如下：
+      //------------
+      console.log([] == false);
+      console.log(![] == false);
+      // 这两个的结果都是true,第一个是，对象 => 字符串 => 数值0 false转换为数字0,这个是true应该没问题，
+      // 第二个前边多了个!，则直接转换为布尔值再取反，转换为布尔值时，空字符串(''),NaN,0，null,undefined这几个外返回的都是true, 所以! []这个[] => true 取反为false,所以![] == false为true。
+      //------------
 
-        // 1. 对象和布尔值比较
-        // 对象和布尔值进行比较时，对象先转换为字符串，然后再转换为数字，布尔值直接转换为数字
-        // [] == true;  //false  []转换为字符串'',然后转换为数字0,true转换为数字1，所以为false
-        // 2. 对象和字符串比较
-        // 对象和字符串进行比较时，对象转换为字符串，然后两者进行比较。
-        // [1, 2, 3] == '1,2,3' // true  [1,2,3]转化为'1,2,3'，然后和'1,2,3'， so结果为true;
-        // 3. 对象和数字比较
-        // 对象和数字进行比较时，对象先转换为字符串，然后转换为数字，再和数字进行比较。
-        // [1] == 1;  // true  `对象先转换为字符串再转换为数字，二者再比较 [1] => '1' => 1 所以结果为true
-        // 4. 字符串和数字比较
-        // 字符串和数字进行比较时，字符串转换成数字，二者再比较。
-        // '1' == 1 // true
-        // 5. 字符串和布尔值比较
-        // 字符串和布尔值进行比较时，二者全部转换成数值再比较。
-        // '1' == true; // true 
-        // 6. 布尔值和数字比较
-        // 布尔值和数字进行比较时，布尔转换为数字，二者比较。
-        // true == 1 // true
+      console.log(!{} == {});
+
+      console.log({} == []);
+
+      console.log(!{} == []);
+
+      console.log(!{} == [2]);
+
     </script>
-</body>
-
+  </body>
 </html>

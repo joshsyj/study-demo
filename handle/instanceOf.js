@@ -16,4 +16,5 @@ function A() { }
 
 a = new A()
 
+
 console.log(myInstanceof(a, A))

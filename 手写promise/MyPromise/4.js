@@ -3,7 +3,7 @@ const FULFILLED = "FULFILLED";
 const REJECTED = "REJECTED";
 class MyPromise {
   constructor(executor) {
-    if (!executor) throw new Error("exector is require");
+    if (typeof executor !== 'function') throw new TypeError('Promise resolver ${executor} is not a function');
     this.value = undefined;
     this.reason = undefined;
     this.status = PENDING;
@@ -32,10 +32,23 @@ class MyPromise {
     }
   }
   then(onFulfilled, onRejected) {
+    // 参数校检
+    if (typeof onFulfilled != 'function') {
+      onFulfilled = function (value) {
+        return value
+      }
+    }
+    if (typeof onRejected != 'function') {
+      onRejected = function (reason) {
+        throw reason
+      }
+    }
+    // 实现链式调用, 且改变了后面then的值, 必须通过新的实例
     let promise2 = new Promise((resolve, reject) => {
       if (this.status == FULFILLED) {
         setTimeout(() => {
           try {
+            console.log(resolve)
             let x = onFulfilled(this.value);
             resolvePromise(promise2, x, resolve, reject);
           } catch (e) {
@@ -85,6 +98,6 @@ class MyPromise {
  * @param {*} resolve
  * @param {*} reject
  */
-function resolvePromise(promise2, x, resolve, reject) {}
+function resolvePromise(promise2, x, resolve, reject) { }
 
 module.exports = MyPromise;

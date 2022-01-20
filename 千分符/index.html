@@ -30,9 +30,9 @@
 
     function num(str) {
       var reg = /(?=(?!\b)(\d{3})+$)/g;
-      str.replace(reg, function(){
-        console.log(arguments)
-      })
+      // str.replace(reg, function(){
+      //   console.log(arguments)
+      // })
       return str.replace(reg, ',')
     }
     console.log(num('234567348901'))

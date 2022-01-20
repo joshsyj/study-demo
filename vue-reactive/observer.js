@@ -14,10 +14,11 @@ class Observer {
         var self = this;
         this.defineReactive(val);
         var dep = new Dep();
+        console.log(dep)
         Object.defineProperty(data, key, {
             get() {
                 if (Dep.target) {
-                    debugger
+                    console.log(Dep.target)
                     dep.depend(Dep.target)
                 }
                 return val;

@@ -1,6 +1,7 @@
 const PENDING = "PENDING";
 const FULFILLED = "FULFILLED";
 const REJECTED = "REJECTED";
+
 class MyPromise {
   constructor(executor) {
     if (!executor) throw new Error("exector is require");

@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        var obj = {
-            0: 1,
-            1: 2,
-            2: 3,
-            3: 4,
-            length: 4
-        }
+      var obj = {
+        0: 1,
+        1: 2,
+        2: 3,
+        3: 4,
+        length: 4,
+      };
 
-        Object.prototype[Symbol.iterator] = iterator;
-        function iterator() {
-            var i = 0;
-            var _this = this;
-            return {
-                next: function () {
-                    console.log('进来了')
-                    return i < _this.length ? {
-                        value: _this[i++],
-                        done: false
-                    } : {
-                        value: undefined,
-                        done: true
-                    }
+      Object.prototype[Symbol.iterator] = iterator;
+      function iterator() {
+        var i = 0;
+        var _this = this;
+        return {
+          next: function () {
+            console.log("进来了");
+            return i < _this.length
+              ? {
+                  value: _this[i++],
+                  done: false,
                 }
-            }
-        }
+              : {
+                  value: undefined,
+                  done: true,
+                };
+          },
+        };
+      }
 
-        for (var v of obj) {
-            console.log(v)
-        }
+      for (var v of obj) {
+        console.log(v);
+      }
     </script>
-</body>
-
+  </body>
 </html>

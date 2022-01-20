@@ -36,7 +36,6 @@ input.oninput = function (v) {
 
 function throttle(fn, delay) {
     let timer = null,
-        remaining = 0,
         previous = new Date();
     return function () {
         let now = new Date(),
@@ -59,3 +58,38 @@ function throttle(fn, delay) {
         }
     };
 }
+
+function throttle(func, wait, options) {
+    let _this, args, timeout;
+    let old = 0;     //时间戳
+    //如果没有options就将其设置为空对象
+    if (!options) options = {};
+  
+    let later = function () {
+      old = new Date().valueOf();
+      timeout = null;
+      func.apply(_this, args);
+    }
+    return function () {
+      _this = this;
+      args = arguments;
+      let now = new Date().valueOf();
+      if (options.leading === false && !old) {
+        old = now;
+      }
+      if (now - old > wait) {
+        // 第一次直接执行
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+        func.apply(_this, args);
+        old = now;
+      } else if (!timeout && options.trailing !== false) {
+        //最后一次也被执行
+        timeout = setTimeout(later, wait)
+      }
+    }
+  }
+  
+  

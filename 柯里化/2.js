@@ -5,7 +5,6 @@
 var foo = function (...args) {
   // 要求实现函数体
   let fun = function (...args2) {
-    console.log(args2);
     return foo(...[...args, ...args2]);
   };
 
@@ -16,6 +15,7 @@ var foo = function (...args) {
   };
   return fun;
 };
+
 
 var f1 = foo(1, 2, 3);
 console.log(f1.getValue());
@@ -28,3 +28,5 @@ console.log(f2.getValue());
 var f3 = foo(1)(2)(3)(4);
 console.log(f3.getValue());
 // 10
+
+

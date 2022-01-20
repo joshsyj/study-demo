@@ -14,6 +14,7 @@ Function.prototype.call = function (context) {
     return result;
 };
 
+
 [].forEach.call([1, 2, 3, 4], function (v) {
     console.log(v)
 })

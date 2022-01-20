@@ -19,6 +19,14 @@ promise.then(
 promise.then(
   (value) => {
     console.log("fulfilled: " + value);
+    return 22
+  },
+  (reason) => {
+    console.log("reason: " + reason);
+  }
+).then(
+  (value) => {
+    console.log("fulfilled: " + value);
   },
   (reason) => {
     console.log("reason: " + reason);

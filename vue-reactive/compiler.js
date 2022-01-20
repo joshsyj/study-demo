@@ -80,7 +80,6 @@ const compileUtil = {
     bind(node, vm, exp, dir) {
         var updaterFn = updater[dir + 'Updater'];
         updaterFn && updaterFn(node, this._getVMVal(vm, exp));
-        debugger
         new Watcher(vm, exp, (val) => {
             updaterFn && updaterFn(node, val)
         })
