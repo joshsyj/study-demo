@@ -55,4 +55,11 @@ function sort(arr) {
     return sort(lef).concat([p], sort(rig))
 }
 
+
+
+
+
+
+
+
 console.log(sort(arr))
